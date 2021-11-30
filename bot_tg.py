@@ -8,8 +8,10 @@ async def on_startup(_):
         print('Bot online now!')
         sqlite_db.sql_start()
 
-client.register_handlers_client(dp)
+
+
 admin.register_handlers_admin(dp)
+client.register_handlers_client(dp)
 other.register_handlers_other(dp)
 
 

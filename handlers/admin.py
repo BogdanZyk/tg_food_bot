@@ -81,6 +81,7 @@ async def delete_item(message : types.Message):
          reply_markup=InlineKeyboardMarkup().add(InlineKeyboardButton(f'Удалить {ret[1]}', callback_data=f'del {ret[1]}')))
  
 def register_handlers_admin(dp : Dispatcher):
+  dp.register_message_handler(make_changes_command, commands = ["moderator"], is_chat_admin = True)
   dp.register_message_handler(cm_start, commands = ['Загрузить'], state = None)
   dp.register_message_handler(cancel_handler, state="*", commands = 'отмена')
   dp.register_message_handler(cancel_handler, Text( equals = 'отмена', ignore_case = True),state = "*")
@@ -88,6 +89,5 @@ def register_handlers_admin(dp : Dispatcher):
   dp.register_message_handler(load_name, state = FSMAdmin.name)
   dp.register_message_handler(load_description, state = FSMAdmin.description)
   dp.register_message_handler(load_price, state = FSMAdmin.price)
-  dp.register_message_handler(make_changes_command, commands = ["moderator"], is_chat_admin = True)
   dp.register_callback_query_handler(del_callback_run, lambda x: x.data and x.data.startswith('del '))
   dp.register_message_handler(delete_item, commands=['Удалить'])

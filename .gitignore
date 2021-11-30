@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+pizza_bot.db
+bot_run.bat
+config.py
+test_inlButton.py
 # Distribution / packaging
 .Python
 build/
